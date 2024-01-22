@@ -11,7 +11,7 @@ int registro()
      char sobrenome [40];
      char cargo [40];
      
-     printf("Digite o cpf a ser cadastrado:");
+     printf("Digite o cpf a ser cadastrado:"); // TELA PARA DIGITAÇÃO DO CPF
      scanf ("%s", cpf);
      
      strcpy(arquivo, cpf); // COPIA OS VALORES DAS STRINGS
@@ -25,7 +25,7 @@ int registro()
      fprintf(file,",");
      fclose(file);
      
-     printf ("Digite o nome a ser cadastrado: ");
+     printf ("Digite o nome a ser cadastrado: "); // TELA PARA DIGITAÇÃO DO NOME
      scanf("%s", nome);
      
      file = fopen(arquivo, "a"); //ATUALIZA O ARQUIVO COM NOME
@@ -36,7 +36,7 @@ int registro()
      fprintf(file, ",");
      fclose(file);
      
-     printf ("Digite o sobrenome a ser cadastrado: "); 
+     printf ("Digite o sobrenome a ser cadastrado: "); // TELA PARA DIGITAÇÃO DO SOBRENOME
      scanf("%s", sobrenome);
 	 
 	 file - fopen(arquivo, "a"); //ATUALIZA O ARQUIVO COM SOBRENOME
@@ -47,7 +47,7 @@ int registro()
      fprintf(file, ",");
      fclose(file);
      
-     printf ("Digite o cargo a ser cadastrado: ");
+     printf ("Digite o cargo a ser cadastrado: "); // TELA PARA DIGITAÇÃO DO CARGO
      scanf("%s", cargo);
      
      file - fopen(arquivo, "a"); //ATUALIZA O ARQUIVO COM CARGO
@@ -55,47 +55,69 @@ int registro()
      fclose(file);
      
      system("pause");
+	 
+	 // FIM DA SELEÇÃO
     		
 }
 
 int consulta()
 {
-     setlocale (LC_ALL, "portuguese"); // definicao de linguagem
+     setlocale (LC_ALL, "portuguese"); // DEFINICAO DE LINGUAGEM
      
      char cpf [40];
      char conteudo [200];
 	 
-	 printf("Digite o cpf a ser consultado: "); //busca de cadastro
+	 printf("Digite o cpf a ser consultado: "); //BUSCA DE CADASTRO
      scanf("%s",cpf);
      
-     FILE *file;
+     FILE *file; // ABRIR ARQUIVO PARA LEITURA
      file = fopen(cpf,"r");
-     
+          
      if(file == NULL)
         {
-         printf("Cadastro não localizado!\n"); //
+         printf("Cadastro não localizado!\n"); //CADASTROS INVÁLIDOS
 	    }
 	 
 	 while(fgets(conteudo, 200, file)!= NULL)
 	   {
-	   	 printf("\nEssas são as informações do usuário: "); //dados de cadastro
+	   	 printf("\nEssas são as informações do usuário: "); //DADOS DE CADASTRO EM TELA
 		 printf ("%s", conteudo);
 		 printf ("\n\n");
 	   }
 	 
 	 system ("pause");
+	 
+	 // FIM DA SELEÇÃO
 	   
 	}
 
 int deletar ()
 {
-     printf("Você escolheu deletar um nome!\n");
-	 system("pause");
+     char cpf[40];
+     
+     printf("Digite o CPF a ser deletado:"); // SELEÇÃO DO CPF A SER DELETADO
+     scanf("%s,cpf");
+     
+     remove(cpf); // REMOVER ARQUIVO
+     
+     printf("O CPF foi deletado!"); // CONFIRMAÇÃO DO CPF DELETADO
+     system("pause");
+     
+     FILE *file; // ABRIR ARQUIVO
+     file = fopen(cpf,"r"); // LER ARQUIVO
+     
+     if(file == NULL) // CPF NÃO ENCONTRADO
+     {
+     	printf ("O usuário não se encontra no sistema! \n");
+     	system ("pause");
+	 }
+	 
+	 // FIM DA SELEÇÃO
 }
 
 int main ()
     {
-	int opcao=0; //definicao  variáveis
+	int opcao=0; //DEFINIÇÃO DE VARIÁVEIS
 	int laco=1;
 	
 	for(laco=1;laco=1;)
@@ -103,26 +125,25 @@ int main ()
 	 	
 	 system("cls");
 	 
-	 setlocale (LC_ALL, "portuguese"); // definicao de linguagem
+	 setlocale (LC_ALL, "portuguese"); // DEFINIÇÃO DE LINGUAGEM
 	
-	 printf ("\t*CARTÓRIO DA EBAC*\n"); // inicio do menu
-	 printf ("**ESTE SOFTWARE É PARA USO LIVRE***\n\n");
+	 printf ("\t*CARTÓRIO DA EBAC*\n"); // INÍCIO DE MENU
+	 printf ("**ESTE SOFTWARE É PARA USO LIVRE***\n\n"); // COPYRIGHT 
 	 
-	 printf ("Seleccione a opção no menu:\n\n");
+	 printf ("Seleccione a opção no menu:\n\n"); //MENU DE SELEÇÃO
 	 printf ("\t1 - Registrar nomes\n");
 	 printf ("\t2 - Consultar nomes\n");
 	 printf ("\t3 - Deletar nomes\n\n");
 	 printf ("\t4 - Sair do sistema\n\n");
+	 printf ("Opção:"); //FIM DO MENU
 	 
-	 printf ("Opção:"); //fim do menu
-	 
-	 scanf ("%d",&opcao); //armazenamento de escolha de usuario
+	 scanf ("%d",&opcao); //ARMAZENAMENTO DE ESCOLHA DE USUÁRIO
 	 
 	 system("cls");
 	 
 	 switch(opcao)
 	 {
-	 	 case 1: //inicio da seleção
+	 	 case 1: //INICIO DA SELEÇÃO DAS FUNÇÕES
 		 registro ();
 		 break;
 		 
@@ -140,11 +161,11 @@ int main ()
 		 break;
 		 
 		 default:
-		 printf("Essa opção não está disponpivel!\n");
+		 printf("Essa opção não está disponivel!\n");
 		 system("pause");
 		 break;
 		
-		// fim da seleção
+		//FIM DA SELEÇÃO
 	 
 	 }
 	
