@@ -116,60 +116,68 @@ int deletar ()
 }
 
 int main ()
-    {
-	int opcao=0; //DEFINIÇÃO DE VARIÁVEIS
-	int laco=1;
+   {
+    	
+     int opcao=0; //DEFINIÇÃO DE VARIÁVEIS
+	 int laco=1;
+	 char senhadigitada[10] = "a"; // DEFINIÇÃO DE SENHA
 	
-	for(laco=1;laco=1;)
-	{
-	 	
-	 system("cls");
-	 
-	 setlocale (LC_ALL, "portuguese"); // DEFINIÇÃO DE LINGUAGEM
-	
-	 printf ("\t*CARTÓRIO DA EBAC*\n"); // INÍCIO DE MENU
-	 printf ("**ESTE SOFTWARE É PARA USO LIVRE***\n\n"); // COPYRIGHT 
-	 
-	 printf ("Seleccione a opção no menu:\n\n"); //MENU DE SELEÇÃO
-	 printf ("\t1 - Registrar nomes\n");
-	 printf ("\t2 - Consultar nomes\n");
-	 printf ("\t3 - Deletar nomes\n\n");
-	 printf ("\t4 - Sair do sistema\n\n");
-	 printf ("Opção:"); //FIM DO MENU
-	 
-	 scanf ("%d",&opcao); //ARMAZENAMENTO DE ESCOLHA DE USUÁRIO
-	 
-	 system("cls");
-	 
-	 switch(opcao)
-	 {
-	 	 case 1: //INICIO DA SELEÇÃO DAS FUNÇÕES
-		 registro ();
-		 break;
-		 
-		 case 2:
-		 consulta ();
-		 break;
-		 
-		 case 3:
-		 deletar();
-		 break;
-		 
-		 case 4:
-		 printf ("Obrigada por utilizar o sistema!\n");
-		 return 0;
-		 break;
-		 
-		 default:
-		 printf("Essa opção não está disponivel!\n");
-		 system("pause");
-		 break;
+	 printf ("*CARTÓRIO DA EBAC*\n\n"); // PÁGINA DA SENHA
+	 printf ("Login de administrador!\n\n Digite a sua senha:");
+	 scanf ("%s", senhadigitada);	
+    	
+	   if(senhadigitada[10] == "admin")
+	   {
 		
-		//FIM DA SELEÇÃO
+	       for(laco=1;laco=1;)
+		   {
+	 	 	 setlocale (LC_ALL, "portuguese"); // DEFINIÇÃO DE LINGUAGEM
+	
+	 	 	 printf ("*CARTÓRIO DA EBAC*\n"); // INÍCIO DE MENU
+	 	 	 printf ("**ESTE SOFTWARE É PARA USO LIVRE***\n\n"); // COPYRIGHT 
 	 
-	 }
-	
+	 		 printf ("Seleccione a opção no menu:\n\n"); //MENU DE SELEÇÃO
+	 		 printf ("\t1 - Registrar nomes\n");
+	 		 printf ("\t2 - Consultar nomes\n");
+	 		 printf ("\t3 - Deletar nomes\n\n");
+			 printf ("\t4 - Sair do sistema\n\n");
+	 	 	 printf ("Opção:"); //FIM DO MENU
+	 
+	 		 scanf ("%d",&opcao); //ARMAZENAMENTO DE ESCOLHA DE USUÁRIO
+	 
+	 		 system("cls"); // LIMPA A TELA
+	 
+	 	       switch(opcao)
+	 	       {	
+	 			 case 1: //INICIO DA SELEÇÃO DAS FUNÇÕES
+		 	     registro ();
+		 	     break;
+		 
+		 	 	 case 2:
+				 consulta ();
+		 		 break;
+		 		
+				 case 3:
+				 deletar();
+		 		 break;
+		 
+		 	     case 4:
+		 	     printf ("Obrigada por utilizar o sistema!\n");
+		 	     return 0;
+		 	     break;
+		 
+			     default:
+			     printf("Essa opção não está disponivel!\n");
+			     system("pause");
+			     break;
+			   }
+			}   	//FIM DA SELEÇÃO
+		}
+		
+	else
+	 printf("Senha incorreta!");	
+				
+   }
 
-	}
+    
 	
-}
